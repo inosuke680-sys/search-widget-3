@@ -1,0 +1,865 @@
+/**
+ * UmaTen Restaurant Search Widget Styles - Enterprise Edition
+ *
+ * @package UmaTen_Restaurant_Search
+ */
+
+/* ===================================
+   Widget Container - Enterprise
+   =================================== */
+.umaten-search-widget.umaten-enterprise {
+    background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+    border: none;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 24px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1), 0 1px 8px rgba(0, 0, 0, 0.05);
+}
+
+/* ===================================
+   Current Context Display
+   =================================== */
+.umaten-current-context {
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 8px;
+    padding: 12px 16px;
+    margin-bottom: 20px;
+    border-left: 4px solid #667eea;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+}
+
+.umaten-context-label {
+    font-size: 11px;
+    font-weight: 600;
+    color: #667eea;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 4px;
+}
+
+.umaten-context-value {
+    font-size: 14px;
+    font-weight: 600;
+    color: #2d3748;
+}
+
+/* ===================================
+   Search Form
+   =================================== */
+.umaten-search-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* ===================================
+   Form Fields
+   =================================== */
+.umaten-search-field {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.umaten-search-field label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.3px;
+}
+
+/* ===================================
+   Input Styles - Enterprise
+   =================================== */
+.umaten-search-input,
+.umaten-select {
+    width: 100%;
+    padding: 14px 16px;
+    font-size: 15px;
+    border: 2px solid rgba(255, 255, 255, 0.8);
+    border-radius: 8px;
+    background-color: rgba(255, 255, 255, 0.95);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-sizing: border-box;
+    font-weight: 500;
+}
+
+.umaten-search-input:focus,
+.umaten-select:focus {
+    outline: none;
+    border-color: #667eea;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 4px rgba(102, 126, 234, 0.1), 0 4px 12px rgba(0, 0, 0, 0.1);
+    transform: translateY(-1px);
+}
+
+.umaten-search-input::placeholder {
+    color: #a0aec0;
+    font-style: normal;
+    font-weight: 400;
+}
+
+/* ===================================
+   Select Dropdown - Enhanced
+   =================================== */
+.umaten-select {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23667eea" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    background-size: 20px;
+    padding-right: 44px;
+}
+
+.umaten-select option {
+    padding: 12px;
+    font-weight: 500;
+}
+
+.umaten-select optgroup {
+    font-weight: 700;
+    font-style: normal;
+    color: #667eea;
+    padding: 8px 0;
+}
+
+.umaten-select optgroup option {
+    padding-left: 16px;
+    font-weight: 500;
+    color: #2d3748;
+}
+
+/* ===================================
+   Submit Button - Enterprise
+   =================================== */
+.umaten-search-submit {
+    display: flex;
+    gap: 12px;
+    margin-top: 8px;
+}
+
+.umaten-search-button,
+.umaten-reset-button {
+    flex: 1;
+    padding: 16px 24px;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    text-transform: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+}
+
+.umaten-search-button {
+    color: #ffffff;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    box-shadow: 0 4px 15px rgba(102, 126, 234, 0.4);
+}
+
+.umaten-search-button:hover {
+    background: linear-gradient(135deg, #5568d3 0%, #63408b 100%);
+    box-shadow: 0 6px 20px rgba(102, 126, 234, 0.5);
+    transform: translateY(-2px);
+}
+
+.umaten-search-button:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 10px rgba(102, 126, 234, 0.4);
+}
+
+.umaten-reset-button {
+    color: #4a5568;
+    background: rgba(255, 255, 255, 0.9);
+    border: 2px solid #e2e8f0;
+    flex: 0 0 auto;
+    min-width: 100px;
+}
+
+.umaten-reset-button:hover {
+    background: #ffffff;
+    border-color: #cbd5e0;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.umaten-search-icon {
+    font-size: 18px;
+    display: inline-block;
+}
+
+/* ===================================
+   Responsive Design - Mobile First
+   =================================== */
+@media (max-width: 768px) {
+    .umaten-search-widget.umaten-enterprise {
+        padding: 18px;
+        border-radius: 10px;
+    }
+
+    .umaten-current-context {
+        padding: 10px 14px;
+    }
+
+    .umaten-search-input,
+    .umaten-select {
+        font-size: 16px; /* Prevents zoom on iOS */
+        padding: 12px 14px;
+    }
+
+    .umaten-search-button,
+    .umaten-reset-button {
+        font-size: 15px;
+        padding: 14px 20px;
+    }
+
+    .umaten-search-submit {
+        flex-direction: column;
+    }
+
+    .umaten-reset-button {
+        min-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .umaten-search-widget.umaten-enterprise {
+        padding: 16px;
+        margin-bottom: 20px;
+    }
+
+    .umaten-search-field label {
+        font-size: 12px;
+    }
+
+    .umaten-search-input,
+    .umaten-select {
+        font-size: 16px;
+        padding: 11px 12px;
+    }
+
+    .umaten-search-button,
+    .umaten-reset-button {
+        font-size: 14px;
+        padding: 13px 18px;
+    }
+}
+
+/* ===================================
+   Loading State
+   =================================== */
+.umaten-search-form.is-loading .umaten-search-button {
+    opacity: 0.7;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.umaten-search-form.is-loading .umaten-search-button::after {
+    content: "";
+    width: 16px;
+    height: 16px;
+    margin-left: 8px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-top-color: #ffffff;
+    border-radius: 50%;
+    animation: spinner 0.8s linear infinite;
+}
+
+@keyframes spinner {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* ===================================
+   Accessibility Enhancements
+   =================================== */
+.umaten-search-input:focus-visible,
+.umaten-select:focus-visible,
+.umaten-search-button:focus-visible,
+.umaten-reset-button:focus-visible {
+    outline: 3px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* Screen reader only */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* ===================================
+   Dark Mode Support
+   =================================== */
+@media (prefers-color-scheme: dark) {
+    .umaten-search-widget.umaten-enterprise {
+        background: linear-gradient(135deg, #1a202c 0%, #2d3748 100%);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 1px 8px rgba(0, 0, 0, 0.2);
+    }
+
+    .umaten-current-context {
+        background: rgba(45, 55, 72, 0.95);
+        border-left-color: #9f7aea;
+    }
+
+    .umaten-context-label {
+        color: #9f7aea;
+    }
+
+    .umaten-context-value {
+        color: #e2e8f0;
+    }
+
+    .umaten-search-field label {
+        color: #e2e8f0;
+    }
+
+    .umaten-search-input,
+    .umaten-select {
+        background-color: rgba(45, 55, 72, 0.9);
+        border-color: rgba(74, 85, 104, 0.6);
+        color: #e2e8f0;
+    }
+
+    .umaten-search-input:focus,
+    .umaten-select:focus {
+        background-color: #2d3748;
+        border-color: #9f7aea;
+    }
+
+    .umaten-search-input::placeholder {
+        color: #718096;
+    }
+
+    .umaten-select {
+        background-image: url('data:image/svg+xml;utf8,<svg fill="%239f7aea" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    }
+
+    .umaten-reset-button {
+        background: rgba(45, 55, 72, 0.9);
+        border-color: #4a5568;
+        color: #e2e8f0;
+    }
+
+    .umaten-reset-button:hover {
+        background: #2d3748;
+        border-color: #718096;
+    }
+}
+
+/* ===================================
+   High Contrast Mode
+   =================================== */
+@media (prefers-contrast: high) {
+    .umaten-search-widget.umaten-enterprise {
+        border: 2px solid currentColor;
+    }
+
+    .umaten-search-input,
+    .umaten-select {
+        border-width: 3px;
+    }
+
+    .umaten-search-button {
+        background: #000;
+        color: #fff;
+    }
+}
+
+/* ===================================
+   Print Styles
+   =================================== */
+@media print {
+    .umaten-search-widget.umaten-enterprise {
+        box-shadow: none;
+        border: 1px solid #000;
+    }
+
+    .umaten-search-button,
+    .umaten-reset-button {
+        display: none;
+    }
+}
+
+/* ===================================
+   Animation Preferences
+   =================================== */
+@media (prefers-reduced-motion: reduce) {
+    .umaten-search-input,
+    .umaten-select,
+    .umaten-search-button,
+    .umaten-reset-button {
+        transition: none;
+    }
+
+    .umaten-search-button:hover,
+    .umaten-reset-button:hover {
+        transform: none;
+    }
+
+    @keyframes spinner {
+        0%, 100% { transform: rotate(0deg); }
+    }
+}
+
+/* ===================================
+   Mobile Responsive - Floating Action Button
+   =================================== */
+
+/* デフォルト（デスクトップ）: FABとモーダル要素を非表示 */
+.umaten-mobile-fab,
+.umaten-modal-overlay,
+.umaten-modal-header {
+    display: none;
+}
+
+/* タブレット以下（768px以下）でモバイル対応を有効化 */
+@media (max-width: 768px) {
+    /* ===== 心理学的デザイン原則を適用 ===== */
+
+    /* 浮動検索ボタン（FAB）- 視認性と注目度を大幅向上 */
+    .umaten-mobile-fab {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        position: fixed;
+        bottom: 20px;
+        right: 20px;
+        min-width: 70px;
+        height: 70px;
+        padding: 8px 12px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border: none;
+        border-radius: 35px;
+        box-shadow: 0 8px 32px rgba(102, 126, 234, 0.7), 0 0 0 0 rgba(102, 126, 234, 0.4);
+        cursor: pointer;
+        z-index: 999;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        font-size: 28px;
+        font-weight: 600;
+        gap: 2px;
+        animation: fabPulse 2s infinite;
+    }
+
+    /* FABラベル - アフォーダンスを明確に */
+    .umaten-mobile-fab::after {
+        content: '検索';
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        margin-top: -2px;
+    }
+
+    /* パルスアニメーション - 注目を集める（心理学的誘導） */
+    @keyframes fabPulse {
+        0%, 100% {
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.7), 0 0 0 0 rgba(102, 126, 234, 0.4);
+        }
+        50% {
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.7), 0 0 0 15px rgba(102, 126, 234, 0);
+        }
+    }
+
+    /* ホバー時 - フィードバックを強化（操作可能性を強調） */
+    .umaten-mobile-fab:hover {
+        transform: scale(1.15) translateY(-3px);
+        box-shadow: 0 12px 40px rgba(102, 126, 234, 0.9), 0 0 0 0 rgba(102, 126, 234, 0);
+        animation: none;
+    }
+
+    /* アクティブ時 - 触覚的フィードバック */
+    .umaten-mobile-fab:active {
+        transform: scale(0.98) translateY(0);
+        box-shadow: 0 4px 20px rgba(102, 126, 234, 0.6);
+    }
+
+    /* モーダルオーバーレイ - 視覚的分離を明確に */
+    .umaten-modal-overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(4px);
+        z-index: 1000;
+        opacity: 0;
+        transition: opacity 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .umaten-modal-overlay.active {
+        display: block;
+        opacity: 1;
+    }
+
+    /* 検索コンテナ（モーダル）- スムーズな出現アニメーション */
+    .umaten-search-container {
+        position: fixed;
+        bottom: -100%;
+        left: 0;
+        right: 0;
+        max-height: 90vh;
+        background: linear-gradient(to bottom, #ffffff 0%, #f8f9fa 100%);
+        border-radius: 24px 24px 0 0;
+        box-shadow: 0 -8px 40px rgba(0, 0, 0, 0.25), 0 -2px 8px rgba(0, 0, 0, 0.1);
+        z-index: 1001;
+        overflow-y: auto;
+        overflow-x: hidden;
+        transition: bottom 0.4s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+        padding: 0;
+        opacity: 0;
+    }
+
+    .umaten-search-container.active {
+        bottom: 0;
+        opacity: 1;
+    }
+
+    /* モーダルヘッダー - 視覚的重みを強調 */
+    .umaten-modal-header {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 24px 20px;
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        color: white;
+        border-radius: 24px 24px 0 0;
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+    }
+
+    /* ヘッダーにアイコンを追加 */
+    .umaten-modal-header::before {
+        content: '🔍';
+        font-size: 24px;
+        margin-right: 8px;
+    }
+
+    .umaten-modal-title {
+        margin: 0;
+        font-size: 20px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    }
+
+    /* 閉じるボタン - フィードバックを強化 */
+    .umaten-modal-close {
+        background: rgba(255, 255, 255, 0.25);
+        border: 2px solid rgba(255, 255, 255, 0.3);
+        color: white;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        font-size: 24px;
+        line-height: 1;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        font-weight: 300;
+    }
+
+    .umaten-modal-close:hover {
+        background: rgba(255, 255, 255, 0.4);
+        border-color: rgba(255, 255, 255, 0.5);
+        transform: scale(1.15) rotate(90deg);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .umaten-modal-close:active {
+        transform: scale(0.95) rotate(90deg);
+    }
+
+    /* フォーム内のパディング調整 */
+    .umaten-search-form {
+        padding: 24px 20px 32px;
+    }
+
+    /* ウィジェット本体の背景を透明に */
+    .umaten-search-widget.umaten-enterprise {
+        background: transparent;
+        box-shadow: none;
+        padding: 0;
+    }
+
+    /* ===== カードデザイン - ゲシュタルトの法則（近接性） ===== */
+    .umaten-search-field {
+        background: white;
+        padding: 16px;
+        border-radius: 12px;
+        margin-bottom: 16px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+        border: 2px solid transparent;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .umaten-search-field:focus-within {
+        border-color: #667eea;
+        box-shadow: 0 4px 16px rgba(102, 126, 234, 0.25);
+        transform: translateY(-2px);
+    }
+
+    /* ラベルにアイコンを追加 - 視覚的手がかり */
+    .umaten-search-field label {
+        font-weight: 600;
+        font-size: 14px;
+        color: #2d3748;
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        margin-bottom: 10px;
+    }
+
+    .umaten-search-field label::before {
+        font-size: 18px;
+    }
+
+    /* カテゴリフィールド */
+    .umaten-search-field:has(#umaten-category-filter) label::before {
+        content: '📂';
+    }
+
+    /* タグフィールド */
+    .umaten-search-field:has(#umaten-tag-filter) label::before {
+        content: '🏷️';
+    }
+
+    /* キーワードフィールド */
+    .umaten-search-field:has(#umaten-keyword) label::before {
+        content: '✏️';
+    }
+
+    /* セレクトボックスとインプットのスタイル強化 */
+    .umaten-select,
+    .umaten-search-input {
+        border: 2px solid #e2e8f0;
+        border-radius: 8px;
+        padding: 14px 16px;
+        font-size: 16px;
+        background: #f8f9fa;
+        transition: all 0.3s ease;
+    }
+
+    .umaten-select:focus,
+    .umaten-search-input:focus {
+        border-color: #667eea;
+        background: white;
+        outline: none;
+        box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+    }
+
+    /* 現在のコンテキスト表示を強調 */
+    .umaten-current-context {
+        background: linear-gradient(135deg, #e0e7ff 0%, #ddd6fe 100%);
+        border-left: 4px solid #667eea;
+        padding: 16px;
+        border-radius: 12px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 8px rgba(102, 126, 234, 0.15);
+    }
+
+    .umaten-context-label {
+        font-size: 12px;
+        font-weight: 700;
+        color: #5b21b6;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        margin-bottom: 6px;
+    }
+
+    .umaten-context-value {
+        font-size: 16px;
+        font-weight: 600;
+        color: #2d3748;
+    }
+
+    /* 検索ボタンをフルワイドに - 視覚的階層を強調 */
+    .umaten-search-submit {
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        margin-top: 24px;
+        padding: 0 4px;
+    }
+
+    .umaten-search-button,
+    .umaten-reset-button {
+        width: 100%;
+        padding: 16px;
+        font-size: 17px;
+        font-weight: 700;
+        border-radius: 12px;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    /* 検索ボタン - CTA（行動喚起）を強調 */
+    .umaten-search-button {
+        background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        box-shadow: 0 6px 20px rgba(102, 126, 234, 0.4);
+        transform: scale(1);
+    }
+
+    .umaten-search-button:hover {
+        transform: scale(1.02) translateY(-2px);
+        box-shadow: 0 8px 30px rgba(102, 126, 234, 0.6);
+    }
+
+    .umaten-search-button:active {
+        transform: scale(0.98);
+    }
+
+    /* リセットボタン */
+    .umaten-reset-button {
+        background: #f1f5f9;
+        color: #64748b;
+        border: 2px solid #e2e8f0;
+    }
+
+    .umaten-reset-button:hover {
+        background: #e2e8f0;
+        border-color: #cbd5e1;
+        transform: translateY(-1px);
+    }
+}
+
+/* スマートフォン（480px以下）でさらに最適化 */
+@media (max-width: 480px) {
+    .umaten-mobile-fab {
+        min-width: 64px;
+        height: 64px;
+        bottom: 16px;
+        right: 16px;
+        font-size: 26px;
+        padding: 6px 10px;
+    }
+
+    .umaten-mobile-fab::after {
+        font-size: 10px;
+    }
+
+    .umaten-search-field {
+        margin-bottom: 14px;
+        padding: 14px;
+    }
+
+    .umaten-search-field label {
+        font-size: 13px;
+        margin-bottom: 8px;
+    }
+
+    .umaten-select,
+    .umaten-search-input {
+        font-size: 16px; /* iOS のズームを防ぐため16px以上 */
+        padding: 13px 14px;
+    }
+
+    .umaten-search-button,
+    .umaten-reset-button {
+        padding: 15px;
+        font-size: 16px;
+    }
+
+    .umaten-modal-header {
+        padding: 20px 16px;
+    }
+
+    .umaten-search-form {
+        padding: 20px 16px 28px;
+    }
+}
+
+/* ダークモード対応（モバイルモーダル） */
+@media (max-width: 768px) and (prefers-color-scheme: dark) {
+    .umaten-search-container {
+        background: linear-gradient(to bottom, #1a1a1a 0%, #0f0f0f 100%);
+        color: #e0e0e0;
+    }
+
+    .umaten-search-field {
+        background: #2d2d2d;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+    }
+
+    .umaten-search-field label {
+        color: #e0e0e0;
+    }
+
+    .umaten-search-input,
+    .umaten-select {
+        background: #1a1a1a;
+        color: #e0e0e0;
+        border-color: #4a4a4a;
+    }
+
+    .umaten-search-input:focus,
+    .umaten-select:focus {
+        background: #2d2d2d;
+        border-color: #667eea;
+    }
+
+    .umaten-current-context {
+        background: linear-gradient(135deg, #2d3748 0%, #1a202c 100%);
+        border-left-color: #667eea;
+    }
+
+    .umaten-context-label {
+        color: #a78bfa;
+    }
+
+    .umaten-context-value {
+        color: #e0e0e0;
+    }
+
+    .umaten-reset-button {
+        background: #2d2d2d;
+        color: #e0e0e0;
+        border-color: #4a4a4a;
+    }
+
+    .umaten-reset-button:hover {
+        background: #3d3d3d;
+    }
+}
+
+/* アニメーション無効設定（モバイルモーダル） */
+@media (max-width: 768px) and (prefers-reduced-motion: reduce) {
+    .umaten-search-container,
+    .umaten-modal-overlay,
+    .umaten-mobile-fab {
+        transition: none;
+        animation: none;
+    }
+
+    .umaten-mobile-fab {
+        animation: none;
+    }
+
+    @keyframes fabPulse {
+        0%, 100% {
+            box-shadow: 0 8px 32px rgba(102, 126, 234, 0.7), 0 0 0 0 rgba(102, 126, 234, 0.4);
+        }
+    }
+}
