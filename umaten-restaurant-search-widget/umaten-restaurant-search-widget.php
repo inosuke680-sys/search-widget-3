@@ -3,7 +3,7 @@
  * Plugin Name: UmaTen Restaurant Search Widget
  * Plugin URI: https://umaten.jp
  * Description: 飲食店レビューサイト用の高度な検索ウィジェット。現在のカテゴリとタグを自動取得し、範囲指定検索とフリーワード検索が可能です。
- * Version: 1.1.2
+ * Version: 1.1.3
  * Author: UmaTen
  * Author URI: https://umaten.jp
  * License: GPL v2 or later
@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('UMATEN_SEARCH_VERSION', '1.1.2');
+define('UMATEN_SEARCH_VERSION', '1.1.3');
 define('UMATEN_SEARCH_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('UMATEN_SEARCH_PLUGIN_URL', plugin_dir_url(__FILE__));
 
@@ -68,7 +68,8 @@ class Umaten_Restaurant_Search_Widget_Plugin {
         add_action('init', array($this, 'add_rewrite_rules'));
         add_filter('query_vars', array($this, 'add_query_vars'));
         // v1.1.0: 404エラー処理の改善
-        add_action('template_redirect', array($this, 'handle_taxonomy_urls'), 1);
+        // v1.1.3: 優先度を999に変更し、他のプラグインやWordPressコアを先に実行
+        add_action('template_redirect', array($this, 'handle_taxonomy_urls'), 999);
     }
 
     /**
@@ -204,31 +205,32 @@ class Umaten_Restaurant_Search_Widget_Plugin {
      * Add custom rewrite rules for hierarchical category/tag URLs
      * Example: /hokkaido/susukino/washoku
      * v1.1.2: WordPress コアURLやプラグインURLとの競合を防ぐため、
-     * 除外パターンを追加し、優先度を調整
+     * より厳格な除外パターンを実装
+     * v1.1.3: sitemap、feed、WordPress予約語を完全に除外
      */
     public function add_rewrite_rules() {
-        // WordPress予約語とコアURLのパターンを除外
-        // wp-, sitemap, feed, trackback, xmlrpc, robots.txt などを除外
-        $exclusions = 'wp-admin|wp-content|wp-includes|wp-json|feed|trackback|xmlrpc|sitemap|sitemap\.xml|wp-sitemap\.xml|robots\.txt|favicon\.ico';
+        // 日本語スラッグまたは英数字のみを許可（ハイフンとアンダースコアを含む）
+        // sitemapなどのWordPress予約語は明示的に除外
+        $slug_pattern = '([a-zA-Z0-9\-_\p{Hiragana}\p{Katakana}\p{Han}]+)';
 
-        // カスタムリライトルールを追加
         // 3階層: 都道府県/エリア/ジャンル
         add_rewrite_rule(
-            '^(?!' . $exclusions . ')([^/]+)/([^/]+)/([^/]+)/?$',
+            '^' . $slug_pattern . '/' . $slug_pattern . '/' . $slug_pattern . '/?$',
             'index.php?umaten_region=$matches[1]&umaten_area=$matches[2]&umaten_genre=$matches[3]',
             'bottom'
         );
 
         // 2階層: 都道府県/エリア
         add_rewrite_rule(
-            '^(?!' . $exclusions . ')([^/]+)/([^/]+)/?$',
+            '^' . $slug_pattern . '/' . $slug_pattern . '/?$',
             'index.php?umaten_region=$matches[1]&umaten_area=$matches[2]',
             'bottom'
         );
 
         // 1階層: 都道府県のみ
+        // 注意: このルールは最も広範なので、十分に慎重に
         add_rewrite_rule(
-            '^(?!' . $exclusions . ')([^/]+)/?$',
+            '^' . $slug_pattern . '/?$',
             'index.php?umaten_region=$matches[1]',
             'bottom'
         );
@@ -249,8 +251,14 @@ class Umaten_Restaurant_Search_Widget_Plugin {
     /**
      * Handle taxonomy URLs and prevent redirect to home
      * v1.1.0: リライトルールで設定されたクエリ変数を適切に処理
+     * v1.1.3: タームが存在しない場合は404にせず、WordPressのデフォルトルーティングに委ねる
      */
     public function handle_taxonomy_urls() {
+        // 既に404の場合やis_adminの場合は処理しない
+        if (is_404() || is_admin()) {
+            return;
+        }
+
         $region = get_query_var('umaten_region', '');
         $area = get_query_var('umaten_area', '');
         $genre = get_query_var('umaten_genre', '');
@@ -281,13 +289,12 @@ class Umaten_Restaurant_Search_Widget_Plugin {
                 }
             }
 
-            // 有効なタクソノミーが1つも存在しない場合は404
+            // v1.1.3: 有効なタクソノミーが1つも存在しない場合は404を設定
+            // ただし、優先度999で実行されるため、他のプラグインが先に処理できる
             if (!$valid_query) {
                 global $wp_query;
                 $wp_query->set_404();
                 status_header(404);
-                get_template_part(404);
-                exit();
             }
         }
     }
