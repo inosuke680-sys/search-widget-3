@@ -3,7 +3,7 @@
  * Plugin Name: UmaTen Restaurant Search Widget
  * Plugin URI: https://umaten.jp
  * Description: 飲食店レビューサイト用の高度な検索ウィジェット。現在のカテゴリとタグを自動取得し、範囲指定検索とフリーワード検索が可能です。
- * Version: 1.1.1
+ * Version: 1.1.2
  * Author: UmaTen
  * Author URI: https://umaten.jp
  * License: GPL v2 or later
@@ -18,7 +18,7 @@ if (!defined('ABSPATH')) {
 }
 
 // Define plugin constants
-define('UMATEN_SEARCH_VERSION', '1.1.1');
+define('UMATEN_SEARCH_VERSION', '1.1.2');
 define('UMATEN_SEARCH_PLUGIN_DIR', plugin_dir_path(__FILE__));
 define('UMATEN_SEARCH_PLUGIN_URL', plugin_dir_url(__FILE__));
 
@@ -203,28 +203,34 @@ class Umaten_Restaurant_Search_Widget_Plugin {
     /**
      * Add custom rewrite rules for hierarchical category/tag URLs
      * Example: /hokkaido/susukino/washoku
+     * v1.1.2: WordPress コアURLやプラグインURLとの競合を防ぐため、
+     * 除外パターンを追加し、優先度を調整
      */
     public function add_rewrite_rules() {
+        // WordPress予約語とコアURLのパターンを除外
+        // wp-, sitemap, feed, trackback, xmlrpc, robots.txt などを除外
+        $exclusions = 'wp-admin|wp-content|wp-includes|wp-json|feed|trackback|xmlrpc|sitemap|sitemap\.xml|wp-sitemap\.xml|robots\.txt|favicon\.ico';
+
         // カスタムリライトルールを追加
         // 3階層: 都道府県/エリア/ジャンル
         add_rewrite_rule(
-            '^([^/]+)/([^/]+)/([^/]+)/?$',
+            '^(?!' . $exclusions . ')([^/]+)/([^/]+)/([^/]+)/?$',
             'index.php?umaten_region=$matches[1]&umaten_area=$matches[2]&umaten_genre=$matches[3]',
-            'top'
+            'bottom'
         );
 
         // 2階層: 都道府県/エリア
         add_rewrite_rule(
-            '^([^/]+)/([^/]+)/?$',
+            '^(?!' . $exclusions . ')([^/]+)/([^/]+)/?$',
             'index.php?umaten_region=$matches[1]&umaten_area=$matches[2]',
-            'top'
+            'bottom'
         );
 
         // 1階層: 都道府県のみ
         add_rewrite_rule(
-            '^([^/]+)/?$',
+            '^(?!' . $exclusions . ')([^/]+)/?$',
             'index.php?umaten_region=$matches[1]',
-            'top'
+            'bottom'
         );
     }
 
